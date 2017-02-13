@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="FileAttenteVisaService" targetNamespace="http://ws.server.aida.awb/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ws.server.aida.awb/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	
+	<types>
+		
+		<xsd:schema>
+			<xsd:import
+				schemaLocation="http://localhost:8080/AWB-VISA/FileAttenteVisa?xsd=1"
+				namespace="http://ws.server.aida.awb/" />
+		</xsd:schema>
+	</types>
+	
+	<message name="checkAuthentification">
+		<part name="arg0" type="tns:securityRequest" />
+	</message>
+	
+	<message name="checkAuthentificationResponse">
+		<part name="return" type="tns:securityResponse" />
+	</message>
+	
+	<message name="getListeOperationsEnAttenteVisa">
+		<part name="arg0" type="tns:listeOperationsEnAttenteVisaRequest" />
+	</message>
+	
+	<message name="getListeOperationsEnAttenteVisaResponse">
+		<part name="return" type="tns:listeOperationsEnAttenteVisaResponse" />
+	</message>
+	
+	<portType name="FileAttenteVisaService">
+		
+		<operation name="checkAuthentification">
+			<input message="tns:checkAuthentification" />
+			<output message="tns:checkAuthentificationResponse" />
+		</operation>
+		
+		<operation name="getListeOperationsEnAttenteVisa">
+			<input message="tns:getListeOperationsEnAttenteVisa" />
+			<output message="tns:getListeOperationsEnAttenteVisaResponse" />
+		</operation>
+	</portType>
+	
+	<binding name="FileAttenteVisaServiceImplPortBinding" type="tns:FileAttenteVisaService">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		
+		<operation name="checkAuthentification">
+			<soap:operation soapAction="" />
+			
+			<input>
+				<soap:body namespace="http://ws.server.aida.awb/" use="literal" />
+			</input>
+			
+			<output>
+				<soap:body namespace="http://ws.server.aida.awb/" use="literal" />
+			</output>
+		</operation>
+		
+		<operation name="getListeOperationsEnAttenteVisa">
+			<soap:operation soapAction="" />
+			
+			<input>
+				<soap:body namespace="http://ws.server.aida.awb/" use="literal" />
+			</input>
+			
+			<output>
+				<soap:body namespace="http://ws.server.aida.awb/" use="literal" />
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="FileAttenteVisaService">
+		
+		<port name="FileAttenteVisaServiceImplPort" binding="tns:FileAttenteVisaServiceImplPortBinding">
+			<soap:address location="http://localhost:8080/AWB-VISA/FileAttenteVisa" />
+		</port>
+	</service>
+</definitions>
